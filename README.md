@@ -1,2 +1,3 @@
-# dremio-infra
-Dremio's example run with docker 
+# Dremio infra
+
+This repository contains config files to deploy Dremio with Docker
