@@ -22,7 +22,7 @@ Before start containers, set appropriated users and permissions:
   sudo chown dremio:dremio metadata
 ```
 #### Starting the containers
-
+At cluster-1 dir, execute the command below:
 ```
   docker-compose up -d 
 ``` 
