@@ -13,7 +13,7 @@ At standalone dir, execute the command below:
 ## Running cluster with zookeeper embedded
 This example run one master coordinator and two executor nodes
 
-![Alt text](images/cluster-1.png?raw=true "zookeeper embedded" | width=500px | height=500px)
+![zookeeper embedded](images/cluster-1.png)
 #### Configure users and permissions
 Before start containers, set appropriated users and permissions:
 ```
@@ -31,4 +31,4 @@ You can now navigate to the Dremio UI at <a href="http://localhost:9047">http://
 
 ## Running High Availability cluster
 TODO
-![Alt text](images/cluster-2.png?raw=true "HA cluster" | width=500px | height=500px)
+![HA cluster](images/cluster-2.png)
