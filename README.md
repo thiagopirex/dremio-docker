@@ -1,3 +1,30 @@
-# Dremio infra
+# Running Dremio with Docker
 
-This repository contains config files to deploy Dremio with Docker
+This repository contains configuration files for deploying Dremio with Docker on different architectures.
+
+## Running standalone architecture
+At standalone dir, execute the command below:
+
+```
+  docker-compose up -d 
+``` 
+  
+
+## Running cluster with zookeeper embedded
+This example run one master coordinator and two executor nodes
+
+![Alt text](images/cluster-1.png?raw=true "zookeeper embedded")
+#### Configure users and permissions
+Before start containers, set appropriated users and permissions:
+```
+  sudo groupadd -g 999 dremio
+  sudo useradd dremio -u 999 -g 999
+  sudo chown dremio:dremio metadata
+```
+#### Starting the containers
+
+```
+  docker-compose up -d 
+``` 
+
+You can now navigate to the Dremio UI at <a href="http://localhost:9047">http://localhost:9047</a>

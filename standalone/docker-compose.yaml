@@ -1,0 +1,14 @@
+version: '3'
+services:
+    dremio-standalone:
+        container_name: dremio-standalone
+        image: dremio/dremio-oss:latest
+        ports:
+            - "9047:9047"
+            - "31010:31010"
+            - "45678:45678"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:9047/apiv2/server_status"]
+            interval: 10s
+            timeout: 5s
+            retries: 24

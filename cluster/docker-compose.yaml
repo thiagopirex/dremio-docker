@@ -1,0 +1,35 @@
+version: '3'
+services:
+    coordinator-master:
+        container_name: dremio-coordinator-master
+        image: dremio/dremio-oss:latest
+        volumes:
+            - ./coordinator-master.conf:/opt/dremio/conf/dremio.conf
+            - ./metadata:/opt/dremio/data
+        ports:
+            - "9047:9047"
+            - "31010:31010"
+            - "45678:45678"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:9047/apiv2/server_status"]
+            interval: 10s
+            timeout: 5s
+            retries: 24
+    executor-1:
+        container_name: dremio-executor-1
+        image: dremio/dremio-oss:latest
+        volumes:
+            - ./executor.conf:/opt/dremio/conf/dremio.conf
+        ports:
+            - "45679:45678"
+        links:
+            - coordinator-master
+    executor-2:
+        container_name: dremio-executor-2
+        image: dremio/dremio-oss:latest
+        volumes:
+            - ./executor.conf:/opt/dremio/conf/dremio.conf
+        ports:
+            - "45680:45678"
+        links:
+            - coordinator-master
